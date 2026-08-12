@@ -1,0 +1,19 @@
+generated: '2026-08-11'
+method: searched
+source: https://tech.cosm.com/contact
+plan_count: 0
+plans: []
+note: >-
+  Cosm publishes no API plans or developer pricing of any kind, because it publishes
+  no API. Its two commercial motions are consumer ticketing (per-event ticket prices
+  on cosm.com/venues, sold through the venue pages and the Cosm app) and capital-sale
+  dome systems sold through a "Contact Us" form on tech.cosm.com — no price list, no
+  tiers, no quotas. No `Plans` pointer is wired into apis.yml: a zero-plan artifact
+  must not be read as a published plan surface.
+x-evidence:
+  fetched: '2026-08-11'
+  urls:
+  - url: https://tech.cosm.com/contact
+    status: 200
+  - url: https://www.cosm.com/venues
+    status: 200

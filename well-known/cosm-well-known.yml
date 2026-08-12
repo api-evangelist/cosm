@@ -1,0 +1,150 @@
+generated: '2026-08-11'
+method: probed
+source: live probe of every Cosm-operated host found on the public site
+note: >-
+  Cosm operates no API host, so the probe ran against the six Cosm-controlled web
+  hosts instead. Fifty-eight of sixty paths returned 404 (or 401 behind the partner
+  portal). The two 200s are both third-party platform documents served on Cosm
+  CNAMEs, and are recorded as such: the OpenID Connect discovery document is
+  Salesforce Experience Cloud's, published at partners.cosm.com because the customer
+  support portal runs on Salesforce; the security.txt is Intercom's own policy
+  (Canonical points at app.intercom.com), NOT a Cosm-published disclosure policy, so
+  no SecurityTxt pointer is emitted for it.
+hosts:
+- host: https://www.cosm.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /robots.txt
+    status: 404
+    note: the marketing site serves no robots.txt and no sitemap.xml
+- host: https://tech.cosm.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: https://www.es.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: https://partners.cosm.com
+  note: >-
+    Salesforce Experience Cloud (resolves to live.siteforce.com behind Cloudflare).
+    Every path except OIDC discovery answers 401 to an anonymous client.
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: application/json;charset=UTF-8
+    file: cosm-partners-openid-configuration.json
+    third_party: salesforce-experience-cloud
+    note: >-
+      Real RFC 8414/OIDC discovery document. issuer https://partners.cosm.com,
+      authorization_endpoint /services/oauth2/authorize, token_endpoint
+      /services/oauth2/token, jwks_uri /id/keys. The scopes_supported list is the
+      Salesforce platform scope set (api, full, openid, refresh_token, chatter_api,
+      cdp_*, einstein_gpt_api, mcp_api …), identical across every Experience Cloud
+      site — it is NOT a Cosm-authored scope model, so no OAuthScopes artifact is
+      derived from it.
+  - path: /.well-known/security.txt
+    status: 401
+  - path: /.well-known/oauth-authorization-server
+    status: 401
+  - path: /.well-known/api-catalog
+    status: 401
+  - path: /.well-known/ai-plugin.json
+    status: 401
+  - path: /.well-known/agent-card.json
+    status: 401
+  - path: /.well-known/agent.json
+    status: 401
+- host: https://help.cosm.com
+  note: Intercom-hosted guest help center on a Cosm CNAME.
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/plain
+    third_party: intercom
+    file: null
+    note: >-
+      NOT saved and NOT pointed at. The body is Intercom's own vulnerability policy
+      (Contact https://bugcrowd.com/intercom, Canonical
+      https://app.intercom.com/.well-known/security.txt). Recording it as Cosm's
+      security.txt would credit Cosm with a disclosure program it did not publish.
+  - path: /llms.txt
+    status: 200
+    content_type: text/plain
+    file: ../llms/cosm-llms.txt
+    note: >-
+      Genuine llms.txt served on a Cosm host — Intercom auto-generates it from the
+      help-center article tree. Guest-experience content (hours, parking, bag policy,
+      ticket transfers), not an API index.
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://studios.cosm.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+x-evidence:
+  fetched: '2026-08-11'
+  hosts_probed: 6
+  paths_probed: 60
+  documents_returned_200: 2
