@@ -14,6 +14,17 @@ description: 'Cosm is a Los Angeles-based immersive technology, media and entert
   API across the planetarium industry" — is documented only inside the customer support
   portal at partners.cosm.com, which requires a login.'
 url: https://raw.githubusercontent.com/api-evangelist/cosm/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://prod.cosm-cdn.io/cosmdotcom/content_pages/cosm/cosm-we-power-immersive-experiences-around-the-world.webp
 x-type: company
 x-source: harvest:secondary-market
